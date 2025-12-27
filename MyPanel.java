@@ -1,15 +1,8 @@
-import javax.swing.JPanel;
-
-import org.w3c.dom.events.MouseEvent;
-
-import javax.swing.BorderFactory;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseMotionAdapter; 
+import javax.swing.BorderFactory;
+import javax.swing.JPanel; 
 
 class MyPanel extends JPanel {
 
@@ -17,7 +10,8 @@ class MyPanel extends JPanel {
     private int squareY = 50;
     private int squareW = 20;
     private int squareH = 20;
-
+    private Coordinata c=new Coordinata(squareX, squareY);
+    private Quadrato quadrato=new Quadrato(10, 10, c, squareH, squareW);
 
     public MyPanel() {
         setBorder(BorderFactory.createLineBorder(Color.black));

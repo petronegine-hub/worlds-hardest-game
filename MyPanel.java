@@ -6,18 +6,15 @@ import javax.swing.JPanel;
 
 class MyPanel extends JPanel {
 
-    // Queste variabili ora le usiamo solo per i valori iniziali o limiti
     private int squareW = 20;
     private int squareH = 20;
-    
-    // Creiamo gli oggetti
+
     private Coordinata c = new Coordinata(50, 50);
     private Quadrato quadrato = new Quadrato(c, squareH, squareW);
 
     public MyPanel() {
         setBorder(BorderFactory.createLineBorder(Color.black));
         
-        // FONDAMENTALE: Senza questo il KeyListener non riceve i tasti
         setFocusable(true);
         requestFocusInWindow();
 
@@ -36,12 +33,12 @@ class MyPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);       
-        // Disegna usando i dati dell'oggetto quadrato
+       
         g.fillRect(quadrato.getCoordinate().getX(), quadrato.getCoordinate().getY(), quadrato.getLargezza(), quadrato.getAlteza());
     }   
 
     public void relativeMoveSquare(int deltaX, int deltaY) {
-        // Prendiamo la X e Y attuali dall'oggetto, non dalle variabili rimosse
+       
         int xAbs = quadrato.getCoordinate().getX() + deltaX;
         int yAbs = quadrato.getCoordinate().getY() + deltaY;
 

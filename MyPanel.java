@@ -8,6 +8,7 @@ class MyPanel extends JPanel {
 
     private int squareW = 20;
     private int squareH = 20;
+    // Creiamo gli oggetti
 
     private Coordinata c = new Coordinata(50, 50);
     private Quadrato quadrato = new Quadrato(c, squareH, squareW);

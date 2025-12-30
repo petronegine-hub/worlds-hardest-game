@@ -1,16 +1,39 @@
 public class Quadrato {
-    public int velocitaX;
-    public int velocitaY;
-    public Coordinata cordinate;
+    
+    public Coordinata coordinate;
     public int alteza;
     public int largezza;
 
-    public Quadrato( int vX, int vY, Coordinata c, int a, int l) 
+    /**
+     * @param c
+     * @param a
+     * @param l
+     */
+    public Quadrato( Coordinata c, int a, int l) 
     {
-       velocitaX = vX;
-       velocitaY = vY; 
-       cordinate = c;
+        
+       coordinate = c;
        alteza = a;
        largezza = l;
+    }
+
+    /**
+     * @return
+     */
+    public Coordinata getCoordinate() 
+    { 
+        return coordinate;
+    }
+
+    /**
+     * @return
+     */
+    public int getAlteza() 
+    {
+        return alteza;
+    }
+
+    public int getLargezza() {
+        return largezza;
     }
 }

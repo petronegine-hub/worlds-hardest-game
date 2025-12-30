@@ -6,21 +6,25 @@ import javax.swing.JPanel;
 
 class MyPanel extends JPanel {
 
-    private int squareX = 50;
-    private int squareY = 50;
     private int squareW = 20;
     private int squareH = 20;
-    private Coordinata c=new Coordinata(squareX, squareY);
-    private Quadrato quadrato=new Quadrato(10, 10, c, squareH, squareW);
+    // Creiamo gli oggetti
+
+    private Coordinata c = new Coordinata(50, 50);
+    private Quadrato quadrato = new Quadrato(c, squareH, squareW);
 
     public MyPanel() {
         setBorder(BorderFactory.createLineBorder(Color.black));
+        
+        setFocusable(true);
+        requestFocusInWindow();
+
         MyMouseAdapter mouse = new MyMouseAdapter(this);
         addMouseListener(mouse);
-        
-        
-    }
 
+        MykeyAdapter key = new MykeyAdapter(this);
+        addKeyListener(key);
+    }
 
     @Override
     public Dimension getPreferredSize() {
@@ -30,21 +34,41 @@ class MyPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);       
+       
+        g.fillRect(quadrato.getCoordinate().getX(), quadrato.getCoordinate().getY(), quadrato.getLargezza(), quadrato.getAlteza());
+    }   
 
-        // Draw Text
-        g.drawString("This is my custom Panel!",10,20);
+    public void relativeMoveSquare(int deltaX, int deltaY) {
+       
+        int xAbs = quadrato.getCoordinate().getX() + deltaX;
+        int yAbs = quadrato.getCoordinate().getY() + deltaY;
 
-        g.setColor(Color.RED);
-        g.fillRect(squareX,squareY,squareW,squareH);
-        g.setColor(Color.BLACK);
-        g.drawRect(squareX,squareY,squareW,squareH);
-    }  
-
-     public void moveSquare(int x, int y) {
-        if ((squareX!=x) || (squareY!=y)) {
-            squareX=x;
-            squareY=y;
-            repaint();
-        } 
+        moveSquare(xAbs, yAbs);
     }
+
+    public void moveSquare(int x, int y) {
+    //controla i bordi di sinestra e destra
+    if (x < 0) 
+    {
+        x = 0;
+    } 
+    else if (x + quadrato.getLargezza() > this.getWidth()) 
+    {
+        x = this.getWidth() - quadrato.getLargezza();
+    }
+    //cotrolo dei bordi in alto e in basso
+    if (y < 0) 
+    {
+        y = 0;
+    } 
+    else if (y + quadrato.getAlteza() > this.getHeight()) 
+    {
+        y = this.getHeight() - quadrato.getAlteza();
+    }
+    //modivica la x e la y 
+    quadrato.getCoordinate().setX(x);
+    quadrato.getCoordinate().setY(y);
+
+    repaint();
+}
 }

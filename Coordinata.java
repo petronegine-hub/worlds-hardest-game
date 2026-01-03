@@ -26,4 +26,9 @@ public class Coordinata {
     public String toString() {
         return "Coordinata(" + x + ", " + y + ")";
     }
+
+    public void Sposta(int dx, int dy) {
+    x += dx;
+    y += dy;
+    }
 }

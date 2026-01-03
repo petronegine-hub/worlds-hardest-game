@@ -1,8 +1,6 @@
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseListener;
 
-import org.w3c.dom.events.MouseEvent;
-
 public class MyMouseAdapter implements MouseListener{
 
     MyPanel pannelloSuCuiLavorare;
@@ -42,6 +40,5 @@ public class MyMouseAdapter implements MouseListener{
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
     }
-
 
 }

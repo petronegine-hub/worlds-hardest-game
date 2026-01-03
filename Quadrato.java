@@ -1,8 +1,8 @@
 public class Quadrato {
     
-    public Coordinata coordinate;
-    public int alteza;
-    public int largezza;
+    private Coordinata coordinate;
+    private int alteza;
+    private int largezza;
 
     /**
      * @param c

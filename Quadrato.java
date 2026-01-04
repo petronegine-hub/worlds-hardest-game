@@ -1,7 +1,7 @@
 public class Quadrato {
     
     private Coordinata coordinate;
-    private int alteza;
+    private int altezza;
     private int largezza;
 
     /**
@@ -13,7 +13,7 @@ public class Quadrato {
     {
         
        coordinate = c;
-       alteza = a;
+       altezza = a;
        largezza = l;
     }
 
@@ -28,9 +28,9 @@ public class Quadrato {
     /**
      * @return
      */
-    public int getAlteza() 
+    public int getAltezza() 
     {
-        return alteza;
+        return altezza;
     }
 
     public int getLargezza() {

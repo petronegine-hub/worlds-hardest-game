@@ -19,9 +19,6 @@ class MyPanel extends JPanel {
         setFocusable(true);
         requestFocusInWindow();
 
-        MyMouseAdapter mouse = new MyMouseAdapter(this);
-        addMouseListener(mouse);
-
         MykeyAdapter key = new MykeyAdapter(this);
         addKeyListener(key);
     }
@@ -47,28 +44,28 @@ class MyPanel extends JPanel {
     }
 
     public void moveSquare(int x, int y) {
-    //controla i bordi di sinestra e destra
-    if (x < 0) 
-    {
-        x = 0;
-    } 
-    else if (x + quadrato.getLargezza() > this.getWidth()) 
-    {
-        x = this.getWidth() - quadrato.getLargezza();
-    }
-    //cotrolo dei bordi in alto e in basso
-    if (y < 0) 
-    {
-        y = 0;
-    } 
-    else if (y + quadrato.getAlteza() > this.getHeight()) 
-    {
-        y = this.getHeight() - quadrato.getAlteza();
-    }
-    //modivica la x e la y 
-    quadrato.getCoordinate().setX(x);
-    quadrato.getCoordinate().setY(y);
+        //controlla i bordi di sinistra e destra
+        if (x < 0) 
+        {
+            x = 0;
+        } 
+        else if (x + quadrato.getLargezza() > this.getWidth()) 
+        {
+            x = this.getWidth() - quadrato.getLargezza();
+        }
+        //controllo dei bordi in alto e in basso
+        if (y < 0) 
+        {
+            y = 0;
+        } 
+        else if (y + quadrato.getAlteza() > this.getHeight()) 
+        {
+            y = this.getHeight() - quadrato.getAlteza();
+        }
+        //modivica la x e la y 
+        quadrato.getCoordinate().setX(x);
+        quadrato.getCoordinate().setY(y);
 
-    repaint();
-}
+        repaint();
+    }
 }

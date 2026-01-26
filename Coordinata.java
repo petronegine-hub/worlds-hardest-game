@@ -28,7 +28,7 @@ public class Coordinata {
     }
 
     public void Sposta(int dx, int dy) {
-    x += dx;
-    y += dy;
+        x += dx;
+        y += dy;
     }
 }

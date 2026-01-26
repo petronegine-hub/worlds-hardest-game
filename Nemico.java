@@ -7,7 +7,7 @@ public class Nemico {
     private Coordinata posizione;
     private int raggio;
     
-    //velcoità di movimento;
+    // Velocità di movimento
     private int velocitaX;
     private int velocitaY;
 
@@ -18,24 +18,39 @@ public class Nemico {
         this.velocitaY = velocitaY;
     }
 
-    public Coordinata getPosizione() {
-        return posizione;
-    }
-
-    public int getRaggio() {
-        return raggio;
-    }
-
     public void muovi() {
         posizione.Sposta(velocitaX, velocitaY);
     }
-
-    public Rectangle getHitBox() {
-        return new Rectangle(posizione.getX() - raggio, posizione.getY() - raggio, raggio * 2, raggio * 2);
-    }
-
+    //disegna il nemico
     public void disegna(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(Color.BLUE); 
         g.fillOval(posizione.getX() - raggio, posizione.getY() - raggio, raggio * 2, raggio * 2);
     }
+
+    //--- metodi x gestire collisioni ---/
+
+    public int getSinistra() {
+        return posizione.getX() - raggio;
+    }
+
+    public int getDestra() {
+        return posizione.getX() + raggio;
+    }
+
+    public int getSopra() {
+        return posizione.getY() - raggio;
+    }
+
+    public int getSotto() {
+        return posizione.getY() + raggio;
+    }
+
+    // Get
+    public int getVelocitaX() { 
+        return velocitaX; 
+    }
+    public int getVelocitaY() { 
+        return velocitaY; 
+    }
+    
 }

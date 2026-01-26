@@ -32,7 +32,7 @@ class MyPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);       
        
-        g.fillRect(quadrato.getCoordinate().getX(), quadrato.getCoordinate().getY(), quadrato.getLargezza(), quadrato.getAlteza());
+        g.fillRect(quadrato.getCoordinate().getX(), quadrato.getCoordinate().getY(), quadrato.getLargezza(), quadrato.getAltezza());
     }   
 
     public void relativeMoveSquare(int deltaX, int deltaY) {
@@ -58,9 +58,9 @@ class MyPanel extends JPanel {
         {
             y = 0;
         } 
-        else if (y + quadrato.getAlteza() > this.getHeight()) 
+        else if (y + quadrato.getAltezza() > this.getHeight()) 
         {
-            y = this.getHeight() - quadrato.getAlteza();
+            y = this.getHeight() - quadrato.getAltezza();
         }
         //modivica la x e la y 
         quadrato.getCoordinate().setX(x);

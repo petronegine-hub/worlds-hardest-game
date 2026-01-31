@@ -34,37 +34,4 @@ class MyPanel extends JPanel {
         g.fillRect(quadrato.getCoordinate().getX(), quadrato.getCoordinate().getY(), quadrato.getLargezza(), quadrato.getAltezza());
     }   
 
-    public void relativeMoveSquare(int deltaX, int deltaY) {
-       
-        int xAbs = quadrato.getCoordinate().getX() + deltaX;
-        int yAbs = quadrato.getCoordinate().getY() + deltaY;
-
-        moveSquare(xAbs, yAbs);
-    }
-
-    public void moveSquare(int x, int y) {
-        //controlla i bordi di sinistra e destra
-        if (x < 0) 
-        {
-            x = 0;
-        } 
-        else if (x + quadrato.getLargezza() > this.getWidth()) 
-        {
-            x = this.getWidth() - quadrato.getLargezza();
-        }
-        //controllo dei bordi in alto e in basso
-        if (y < 0) 
-        {
-            y = 0;
-        } 
-        else if (y + quadrato.getAltezza() > this.getHeight()) 
-        {
-            y = this.getHeight() - quadrato.getAltezza();
-        }
-        //modivica la x e la y 
-        quadrato.getCoordinate().setX(x);
-        quadrato.getCoordinate().setY(y);
-
-        repaint();
-    }
 }

@@ -21,6 +21,7 @@ public class Nemico {
     public void muovi() {
         posizione.Sposta(velocitaX, velocitaY);
     }
+    
     //disegna il nemico
     public void disegna(Graphics g) {
         g.setColor(Color.BLUE); 
@@ -52,5 +53,5 @@ public class Nemico {
     public int getVelocitaY() { 
         return velocitaY; 
     }
-    
+
 }

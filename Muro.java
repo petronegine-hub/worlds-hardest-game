@@ -21,10 +21,18 @@ public class Muro {
     }
 
     // get che servono per il metodo per capire se un punto è dentro il muro
-    public int getX() { return posizione.getX(); }
-    public int getY() { return posizione.getY(); }
-    public int getLarghezza() { return larghezza; }
-    public int getAltezza() { return altezza; }
+    public int getX() { 
+        return posizione.getX(); 
+    }
+    public int getY() { 
+        return posizione.getY(); 
+    }
+    public int getLarghezza() { 
+        return larghezza; 
+    }
+    public int getAltezza() { 
+        return altezza; 
+    }
 
     // Metodo per capire se un punto sia x che y si trova dentro il muro quindi utile per bloccare il quadrato
     public boolean PuntoSopraMuro(int puntox, int puntoy) {

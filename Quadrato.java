@@ -1,4 +1,5 @@
-import javafx.scene.paint.Color;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class Quadrato {
     
@@ -28,7 +29,7 @@ public class Quadrato {
     }
 
     public void disegna(Graphics g) {
-        g.setFill(Color.RED);
+        g.setColor(Color.RED);
         g.fillRect(coordinate.getX(), coordinate.getY(), largezza, altezza);
     }
 }

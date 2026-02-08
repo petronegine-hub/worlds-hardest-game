@@ -28,22 +28,8 @@ public class Nemico {
         g.fillOval(posizione.getX() - raggio, posizione.getY() - raggio, raggio * 2, raggio * 2);
     }
 
-    //--- metodi x gestire collisioni ---/
-
-    public int getSinistra() {
-        return posizione.getX() - raggio;
-    }
-
-    public int getDestra() {
-        return posizione.getX() + raggio;
-    }
-
-    public int getSopra() {
-        return posizione.getY() - raggio;
-    }
-
-    public int getSotto() {
-        return posizione.getY() + raggio;
+    public Rectangle getBounds() {
+        return new Rectangle(posizione.getX() - raggio, posizione.getY() - raggio, raggio * 2, raggio * 2);
     }
 
     // Get

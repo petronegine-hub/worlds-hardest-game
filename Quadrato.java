@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Quadrato {
     
@@ -26,6 +27,10 @@ public class Quadrato {
 
     public int getLargezza() {
         return largezza;
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(coordinate.getX(), coordinate.getY(), largezza, altezza);
     }
 
     public void disegna(Graphics g) {

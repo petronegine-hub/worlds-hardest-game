@@ -2,6 +2,8 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javafx.scene.shape.Rectangle;
+
 public class Muro {
     
     private Coordinata posizione;
@@ -35,8 +37,7 @@ public class Muro {
     }
 
     // Metodo per capire se un punto sia x che y si trova dentro il muro quindi utile per bloccare il quadrato
-    public boolean PuntoSopraMuro(int puntox, int puntoy) {
-        
-        return puntox >= posizione.getX() && puntox <= posizione.getX() + larghezza && puntoy >= posizione.getY() &&  puntoy <= posizione.getY() + altezza;
+    public Rectangle getHitbox() {
+        return new Rectangle(posizione.getX(), posizione.getY(), larghezza, altezza);
     }
 }

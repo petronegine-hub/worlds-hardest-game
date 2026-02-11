@@ -37,4 +37,10 @@ public class Quadrato {
         g.setColor(Color.RED);
         g.fillRect(coordinate.getX(), coordinate.getY(), largezza, altezza);
     }
+
+    public void muovi(int dx, int dy) {
+        coordinate.setX(coordinate.getX() + dx);
+        coordinate.setY(coordinate.getY() + dy);
+    }
+    
 }

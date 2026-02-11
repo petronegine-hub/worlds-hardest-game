@@ -24,5 +24,6 @@ public class SwingPaintDemo1 {
         f.add(p);
         f.pack();
         f.setVisible(true);
+        p.setFocusable(true);
     }
 }

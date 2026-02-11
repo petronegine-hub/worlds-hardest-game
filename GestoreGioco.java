@@ -29,7 +29,7 @@ public class GestoreGioco {
         // Controlla se il giocatore passa sopra una moneta non ancora presa
     }
 
-    private void controllaArrivo() {
+    private void controllaVittoria() {
         // Verifica se il giocatore è nell'area finale del livello e le varie condizioni sono soddisfatte
         
     }
@@ -42,6 +42,10 @@ public class GestoreGioco {
     public void cambiaLivello(Livello nuovoLivello) {
         // Sostituisce il livello corrente con quello nuovo e mette il giocatore alle coordinate di partenza
     }
+
+    public void ControllaCollisioneMuri() {
+        // Controlla se il giocatore collide con un muro e, in caso affermativo, annulla lo spostamento
+    }   
  
     public int getMorti() {
         // Ritorna il numero di tentativi falliti

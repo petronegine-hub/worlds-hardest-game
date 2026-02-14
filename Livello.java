@@ -48,6 +48,13 @@ public class Livello {
         this.areaPartenza = new Rectangle(x, y, w, h);
     }
 
-    //metodo reset
+    public void ResetLivello() {
+        muri.clear();
+        nemici.clear();
+        monete.clear();
+        areaPartenza = null;
+        areaArrivo = null;
+        spawnPoint = null;
+    }
 
 }

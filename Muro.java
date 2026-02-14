@@ -1,7 +1,6 @@
  
 import java.awt.Color;
 import java.awt.Graphics;
-
 import javafx.scene.shape.Rectangle;
 
 public class Muro {

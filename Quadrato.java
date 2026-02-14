@@ -39,8 +39,9 @@ public class Quadrato {
     }
 
     public void muovi(int dx, int dy) {
+        //controllo se vado in negativo con le coordinate o oltre i bordi--------------------------------------------//
         coordinate.setX(coordinate.getX() + dx);
         coordinate.setY(coordinate.getY() + dy);
     }
-    
+
 }

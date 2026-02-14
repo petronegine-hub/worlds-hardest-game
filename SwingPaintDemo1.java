@@ -17,7 +17,7 @@ public class SwingPaintDemo1 {
     
     private static void createAndShowGUI() {
         
-        JFrame f = new JFrame("the words hardest game");
+        JFrame f = new JFrame("Worlds hardest game");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(250,500);
         MyPanel p = new MyPanel();

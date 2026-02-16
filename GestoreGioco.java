@@ -7,7 +7,9 @@ public class GestoreGioco {
     private int contatoreMorti;
 
     public GestoreGioco(Quadrato giocatore, Livello livelloIniziale) {
-        // Inizializza i riferimenti al giocatore e al livello
+    this.giocatore = giocatore;
+    this.livelloCorrente = livelloIniziale;
+    this.contatoreMorti = 0;
     }
 
     public void eseguiCicloLogico() {

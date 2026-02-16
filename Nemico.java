@@ -1,14 +1,13 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.List;
 
-public class Nemico extends Thread{
+public class Nemico {
 
     private Coordinata posizione;
     private int raggio;
-    private int tipoMovimento; // 0: Orizzontale, 1: Verticale, 2: Diagonale Libero
-    private boolean inEsecuzione = true;
-    // Velocità di movimento
+    private int tipoMovimento; // 0: Orizzontale, 1: Verticale, 2: Diagonale
     private int velocitaX;
     private int velocitaY;
 
@@ -18,15 +17,34 @@ public class Nemico extends Thread{
         this.velocitaX = velocitaX;
         this.velocitaY = velocitaY;
         this.tipoMovimento = tipo;
+        
+        // Setup iniziale della velocità in base al tipo se necessario
+        if (tipo == 0) this.velocitaY = 0; // Solo orizzontale
+        if (tipo == 1) this.velocitaX = 0; // Solo verticale
     }
 
-    public void muovi() {
+    public void aggiorna(int limiteW, int limiteH, List<Muro> muri) {
         posizione.Sposta(velocitaX, velocitaY);
+        if (posizione.getX() - raggio < 0 || posizione.getX() + raggio > limiteW) {
+            invertiX();
+        }
+        if (posizione.getY() - raggio < 0 || posizione.getY() + raggio > limiteH) {
+            invertiY();
+        }
+        Rectangle hitbox = getBounds();
+        for (Muro m : muri) {
+            Rectangle rectMuro = new Rectangle(m.getX(), m.getY(), m.getLarghezza(), m.getAltezza());
+            if (hitbox.intersects(rectMuro)) {          
+                if (tipoMovimento == 0 || tipoMovimento == 2) invertiX();
+                if (tipoMovimento == 1 || tipoMovimento == 2) invertiY();
+                posizione.Sposta(velocitaX, velocitaY);
+                break;
+            }
+        }
     }
-    
-    //disegna il nemico
+
     public void disegna(Graphics g) {
-        g.setColor(Color.BLUE); 
+        g.setColor(Color.BLUE);
         g.fillOval(posizione.getX() - raggio, posizione.getY() - raggio, raggio * 2, raggio * 2);
     }
 
@@ -34,54 +52,8 @@ public class Nemico extends Thread{
         return new Rectangle(posizione.getX() - raggio, posizione.getY() - raggio, raggio * 2, raggio * 2);
     }
 
-    //get
-    public int getVelocitaX() { 
-        return velocitaX; 
-    }
-    public int getVelocitaY() { 
-        return velocitaY; 
-    }
-
-    @Override
-    public void run() {
-        while (inEsecuzione) {
-            // Esegue il metodo in base all'intero passato nel costruttore
-            if (tipoMovimento == 0) {
-                muoviOrizzontale();
-            } else if (tipoMovimento == 1) {
-                muoviVerticale();
-            } else if (tipoMovimento == 2) {
-                muoviDiagonale();
-            }
-
-            try {
-                // Frequenza di aggiornamento standard (~60 FPS)
-                Thread.sleep(16);
-            } catch (InterruptedException e) {
-                inEsecuzione = false;
-                Thread.currentThread().interrupt();
-            }
-        }
-    }
-
-    public void muoviOrizzontale() {
-        posizione.Sposta(velocitaX, 0);
-    }
-
-    public void muoviVerticale() {
-        posizione.Sposta(0, velocitaY);
-    }
-
-    public void muoviDiagonale() {
-        posizione.Sposta(velocitaX, velocitaY);
-    }
-
-    public void invertiX() {
-        this.velocitaX = -this.velocitaX;
-    }
-
-    public void invertiY() {
-        this.velocitaY = -this.velocitaY;
-    }
-
+    public void invertiX() { this.velocitaX = -this.velocitaX; }
+    public void invertiY() { this.velocitaY = -this.velocitaY; }
+    public int getVelocitaX() { return velocitaX; }
+    public int getVelocitaY() { return velocitaY; }
 }

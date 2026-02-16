@@ -23,8 +23,8 @@ public class Livello {
         muri.add(new Muro(new Coordinata(x, y), w, h));
     }
 
-    public void aggiungiNemico(int x, int y, int r, int vx, int vy) {
-        nemici.add(new Nemico(new Coordinata(x, y), r, vx, vy, 0)); // Default a movimento orizzontale
+    public void aggiungiNemico(int x, int y, int r, int vx, int vy,int tipo) {
+        nemici.add(new Nemico(new Coordinata(x, y), r, vx, vy, tipo)); // Default a movimento orizzontale
     }
 
     public void aggiungiMoneta(int x, int y, int r) {

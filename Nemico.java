@@ -17,7 +17,7 @@ public class Nemico {
         this.velocitaX = velocitaX;
         this.velocitaY = velocitaY;
         this.tipoMovimento = tipo;
-        
+       
         // Setup iniziale della velocità in base al tipo se necessario
         if (tipo == 0) this.velocitaY = 0; // Solo orizzontale
         if (tipo == 1) this.velocitaX = 0; // Solo verticale

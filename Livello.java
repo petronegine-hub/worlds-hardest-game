@@ -9,7 +9,6 @@ public class Livello {
     private Rectangle areaPartenza; // Area verde iniziale
     private Rectangle areaArrivo;   // Area verde finale
     private Coordinata spawnPoint;  // Punto spawn quadrato
-    private MyPanel pannello;
 
     public Livello(Coordinata spawn) {
         this.spawnPoint = spawn;
@@ -23,6 +22,9 @@ public class Livello {
         muri.add(new Muro(new Coordinata(x, y), w, h));
     }
 
+    public void setSpawnPoint(Coordinata spawn) {
+        this.spawnPoint = spawn;
+    }   
     public void aggiungiNemico(int x, int y, int r, int vx, int vy,int tipo) {
         nemici.add(new Nemico(new Coordinata(x, y), r, vx, vy, tipo)); // Default a movimento orizzontale
     }

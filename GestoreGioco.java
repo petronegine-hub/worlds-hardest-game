@@ -2,23 +2,22 @@ import java.awt.Rectangle;
 
 public class GestoreGioco {
     
+    private int livelloAttuale = 1;
     private Quadrato giocatore;
     private Livello livelloCorrente;
     private int contatoreMorti;
-
-    public GestoreGioco(Quadrato giocatore, Livello livelloIniziale) {
-    this.giocatore = giocatore;
-    this.livelloCorrente = livelloIniziale;
-    this.contatoreMorti = 0;
+    private MyPanel pannello; // Riferimento al pannello per aggiornare la grafica
+ 
+    public GestoreGioco(Quadrato giocatore, Livello livelloIniziale, MyPanel pannello) {
+        this.giocatore = giocatore;
+        this.livelloCorrente = livelloIniziale;
+        this.pannello = pannello;
     }
 
     public void eseguiCicloLogico() {
-      
-        muoviNemici();
         controllaCollisioniNemici();
         controllaRaccoltaMonete();
         controllaVittoria();
-        
     }
 
     public void muoviGiocatore(int dx, int dy) {
@@ -48,9 +47,6 @@ public class GestoreGioco {
         
     }
 
-    private void muoviNemici() {
-        // Chiama il metodo muovi() di ogni nemico presente nel livello
-    }
 
     private void controllaCollisioniNemici() {
         // COntrolla se il rettangolo del giocatore coincied quello di un nemico
@@ -79,37 +75,50 @@ public class GestoreGioco {
     }
 
     private void controllaVittoria() {
-        // Verifica se il giocatore è nell'area finale del livello e le varie condizioni sono soddisfatte
+        Rectangle areaArrivo = livelloCorrente.getAreaArrivo();
+        //controllo se il giocatore tocca l'area di arrivo 
+        if (areaArrivo != null && giocatore.getBounds().intersects(areaArrivo)) {
         
+        //controllo se il giocatore ha preso tutte le monete 
+            boolean tuttePrese = true;
+            for (Moneta m : livelloCorrente.getMonete()) {
+                if (!m.isPresa()) {
+                    tuttePrese = false;
+                    break; // Ne basta una non presa per non vincere
+                }
+        }
+        //se tutto è giusto, il giocatore vince 
+        if (tuttePrese) {
+            System.out.println("Livello completato!");
+            livelloAttuale++;
+            pannello.caricaLivello(livelloAttuale); // Carica il livello successivo  
+        } 
+        else {
+           System.out.println("Ti mancano ancora delle monete!");
+
+        }
+        }
     }
 
     private void resetDopoMorte() {
         contatoreMorti++;
-        System.out.println("Morti totali: " + contatoreMorti);
-        
+
         // Riporta il giocatore allo spawn
         Coordinata spawn = livelloCorrente.getSpawnPoint();
         giocatore.getCoordinate().setX(spawn.getX());
         giocatore.getCoordinate().setY(spawn.getY());
         
-        /*
         //opzionale: resetta tutte le monete anche se muore
         for (Moneta m : livelloCorrente.getMonete()) {
             m.setPresa(false);
-        }
-        */
-        
+        } 
     }
 
     public void cambiaLivello(Livello nuovoLivello) {
         // Sostituisce il livello corrente con quello nuovo e mette il giocatore alle coordinate di partenza
         this.livelloCorrente = nuovoLivello;
         resetDopoMorte(); 
-    }
-
-    public void ControllaCollisioneMuri() {
-        // Controlla se il giocatore collide con un muro e, in caso affermativo, annulla lo spostamento
-        
+        contatoreMorti--;
     }
 
     public int getMorti() {

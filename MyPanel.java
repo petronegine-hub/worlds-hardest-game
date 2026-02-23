@@ -59,7 +59,7 @@ class MyPanel extends JPanel {
         Livello nuovoLivello = new Livello(new Coordinata(0, 0));
 
         switch (numero) {
-            case 1: configuraLivelloVerticale(nuovoLivello);break;
+            case 1: configuraLivello1(nuovoLivello);break;
             case 2: configuraLivello2(nuovoLivello); break;
             case 3: configuraLivello3(nuovoLivello); break;
             case 4: configuraLivelloVerticale(nuovoLivello); break;

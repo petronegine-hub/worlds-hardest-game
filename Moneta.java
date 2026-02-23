@@ -19,13 +19,13 @@ public class Moneta {
             g.setColor(Color.YELLOW);
             g.fillOval(posizione.getX() - raggio, posizione.getY() - raggio, raggio * 2, raggio * 2);
 
-            //bordino nero per vederla meglio (da rivedere perchè non mi ispira troppo)
+            //bordino nero per vederla meglio
             g.setColor(Color.BLACK);
             g.drawOval(posizione.getX() - raggio, posizione.getY() - raggio, raggio * 2, raggio * 2);
         }
     }
 
-    // get e set
+    // get e set per capire se la moneta è stata presa o no e per prendere le coordinate e il raggio della moneta
     public boolean isPresa() {
         return presa;
     }

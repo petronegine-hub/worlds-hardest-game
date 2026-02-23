@@ -9,12 +9,14 @@ public class Livello {
     private Rectangle areaPartenza; // Area verde iniziale
     private Rectangle areaArrivo;   // Area verde finale
     private Coordinata spawnPoint;  // Punto spawn quadrato
+    private List<Rectangle> checkpoints;
 
     public Livello(Coordinata spawn) {
         this.spawnPoint = spawn;
         this.muri = new ArrayList<>();
         this.nemici = new ArrayList<>();
         this.monete = new ArrayList<>();
+        this.checkpoints = new ArrayList<>();
     }
 
     //metodi x aggiungere muri o nemici al livello 
@@ -22,16 +24,25 @@ public class Livello {
         muri.add(new Muro(new Coordinata(x, y), w, h));
     }
 
-    public void setSpawnPoint(Coordinata spawn) {
-        this.spawnPoint = spawn;
-    }   
+    public void aggiungiCheckpoint(int x, int y, int w, int h) {
+        checkpoints.add(new Rectangle(x, y, w, h));
+    }
+
     public void aggiungiNemico(int x, int y, int r, int vx, int vy,int tipo) {
         nemici.add(new Nemico(new Coordinata(x, y), r, vx, vy, tipo)); // Default a movimento orizzontale
     }
 
+    public List<Rectangle> getCheckpoints() {
+        return checkpoints;
+    }
+    
     public void aggiungiMoneta(int x, int y, int r) {
         monete.add(new Moneta(new Coordinata(x, y), r));
     }
+
+    public void setSpawnPoint(Coordinata spawn) {
+        this.spawnPoint = spawn;
+    } 
 
     // Getters per leggere i dati del livello
     public List<Muro> getMuri() { return muri; }
@@ -48,15 +59,6 @@ public class Livello {
 
     public void setAreaPartenza(int x, int y, int w, int h) {
         this.areaPartenza = new Rectangle(x, y, w, h);
-    }
-
-    public void ResetLivello() {
-        muri.clear();
-        nemici.clear();
-        monete.clear();
-        areaPartenza = null;
-        areaArrivo = null;
-        spawnPoint = null;
     }
 
 }

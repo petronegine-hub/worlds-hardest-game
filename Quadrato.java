@@ -29,15 +29,18 @@ public class Quadrato {
         return largezza;
     }
 
+    // Restituisce il rettangolo per il calcolo delle collisioni
     public Rectangle getBounds() {
         return new Rectangle(coordinate.getX(), coordinate.getY(), largezza, altezza);
     }
 
+    // Disegna il quadrato rosso sulla finestra
     public void disegna(Graphics g) {
         g.setColor(Color.RED);
         g.fillRect(coordinate.getX(), coordinate.getY(), largezza, altezza);
     }
 
+    // Aggiorna la posizione in base allo spostamento ricevuto
     public void muovi(int dx, int dy) {
         coordinate.setX(coordinate.getX() + dx);
         coordinate.setY(coordinate.getY() + dy);
